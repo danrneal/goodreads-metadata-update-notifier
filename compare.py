@@ -49,6 +49,7 @@ def main():
             updates[ebook_metadata["goodreads_id"]] = update
 
     display_progress_bar(start_time, len(filepaths), len(filepaths))
+    print()
 
     if len(updates) > 0:
         send_email(updates)
@@ -107,13 +108,13 @@ def parse_metadata(output):
 def compare_metadata(m1, m2):
     update = []
     if m1.get("title") != m2.get("title"):
-        update.append(f"{m1.get('title')} -> {m2.get('title')}")
+        update.append(f"Title: {m1.get('title')} -> {m2.get('title')}")
 
     if m1.get("authors") != m2.get("authors"):
-        update.append(f"{m1.get('authors')} -> {m2.get('authors')}")
+        update.append(f"Author(s): {m1.get('authors')} -> {m2.get('authors')}")
 
     if m1.get("series") != m2.get("series"):
-        update.append(f"{m1.get('series')} -> {m2.get('series')}")
+        update.append(f"Series: {m1.get('series')} -> {m2.get('series')}")
 
     return update
 
