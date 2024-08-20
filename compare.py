@@ -34,8 +34,9 @@ def main():
             f"fetch-ebook-metadata -I {ebook_metadata['goodreads_id']}"
         )
         fetched_ebook_metadata = parse_metadata(fetch_ebook_metadata_output)
+        update = compare_metadata(ebook_metadata, fetched_ebook_metadata)
         tries = 0
-        while "title" not in fetched_ebook_metadata and tries < 3:
+        while len(update) > 0 and tries < 3:
             tries += 1
             fetch_ebook_metadata_output = subprocess.getoutput(
                 f"fetch-ebook-metadata -I {ebook_metadata['goodreads_id']}"
@@ -43,8 +44,8 @@ def main():
             fetched_ebook_metadata = parse_metadata(
                 fetch_ebook_metadata_output
             )
+            update = compare_metadata(ebook_metadata, fetched_ebook_metadata)
 
-        update = compare_metadata(ebook_metadata, fetched_ebook_metadata)
         if len(update) > 0:
             updates[ebook_metadata["goodreads_id"]] = update
 
