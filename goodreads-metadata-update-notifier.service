@@ -1,0 +1,9 @@
+[Unit]
+Description=A script that compares the metadata of epubs in a Calibre library to the metadata on Goodreads and then emails any differences.
+
+[Service]
+User=danrneal
+ExecStart=/usr/bin/sh -c 'cd ~/Documents/goodreads-metadata-update-notifier; . ./.env; env/bin/python compare.py > cron.log 2>&1'
+
+[Install]
+WantedBy=multi-user.target

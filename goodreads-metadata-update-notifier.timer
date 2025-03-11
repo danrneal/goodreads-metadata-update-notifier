@@ -1,0 +1,10 @@
+[Unit]
+Description=A script that compares the metadata of epubs in a Calibre library to the metadata on Goodreads and then emails any differences.
+
+[Timer]
+OnCalendar=daily
+Persistent=true
+WakeSystem=true
+
+[Install]
+WantedBy=timers.target
