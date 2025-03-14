@@ -41,6 +41,17 @@ Then run the script:
 Usage: compare.py
 ```
 
+## Run Automatically
+
+Copy the service and timer files into `/etc/systemd/system/`
+
+Then enable and start the timer:
+
+```bash
+sudo systemctl enable goodreads-metadata-update-notifier.timer
+sudo systemctl start goodreads-metadata-update-notifier.timer
+```
+
 ## License
 
 Goodreads Metadata Update Notifier is licensed under the [MIT license](https://github.com/danrneal/goodreads-metadata-update-notifier/blob/master/LICENSE).
